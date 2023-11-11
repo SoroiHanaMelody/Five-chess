@@ -12,6 +12,7 @@ import static work.microhand.model.game.Chess.CELL_SIZE;
 public class ChessBoardService {
     /**
      * 处理鼠标点击棋盘事件
+     *
      * @param event 鼠标事件
      * @param chess 点击棋盘
      * @return 是否需要 repaint

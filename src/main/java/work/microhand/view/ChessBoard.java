@@ -1,10 +1,10 @@
 package work.microhand.view;
 
-import javax.swing.*;
-import java.awt.*;
-
 import work.microhand.model.game.Chess;
 import work.microhand.model.game.Player;
+
+import javax.swing.*;
+import java.awt.*;
 
 import static work.microhand.model.game.Chess.CELL_SIZE;
 
