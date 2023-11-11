@@ -1,4 +1,4 @@
-package microhand;
+package work.microhand;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;

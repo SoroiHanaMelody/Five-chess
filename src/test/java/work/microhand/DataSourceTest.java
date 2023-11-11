@@ -1,4 +1,4 @@
-package microhand;
+package work.microhand;
 
 import org.junit.jupiter.api.Test;
 import work.microhand.io.DataSource;
