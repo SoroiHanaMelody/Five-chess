@@ -19,15 +19,9 @@ public class DataSource {
      * @param properties 配置文件
      */
     public DataSource(Properties properties) {
-        initDatabase(properties);
         dataSource = new DruidDataSource();
         dataSource.configFromPropety(properties);
         instance = this;
-    }
-
-    public void initDatabase(Properties properties) {
-        // create database if not exist
-        new Derby(properties);
     }
 
     public static DataSource getInstance() {
