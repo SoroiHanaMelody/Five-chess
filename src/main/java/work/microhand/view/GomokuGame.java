@@ -1,104 +1,40 @@
 package work.microhand.view;
 
+import work.microhand.model.game.Chess;
+import work.microhand.service.ChessBoardService;
+
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
+import static work.microhand.model.game.Chess.CELL_SIZE;
 
 /**
  * @author SanseYooyea
  */
 public class GomokuGame extends JFrame {
-    private static final int ROWS = 15;
-    private static final int COLS = 15;
-    private static final int CELL_SIZE = 30;
-
-    private char[][] board = new char[ROWS][COLS];
-    private char currentPlayer = 'X';
+    private Chess chess;
 
     public GomokuGame() {
         setTitle("五子棋");
-        setSize(ROWS * CELL_SIZE, COLS * CELL_SIZE);
+        chess = new Chess(15, 15);
+        setSize(chess.getRows() * CELL_SIZE + 100, chess.getCols() * CELL_SIZE + 100);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        ChessBoard chessBoard = new ChessBoard();
+        ChessBoard chessBoard = new ChessBoard(chess);
         add(chessBoard);
 
-        chessBoard.addMouseListener(new ChessMouseListener());
-
-        initializeBoard();
-
-        setVisible(true);
-    }
-
-    private void initializeBoard() {
-        for (int i = 0; i < ROWS; i++) {
-            for (int j = 0; j < COLS; j++) {
-                board[i][j] = ' ';
-            }
-        }
-    }
-
-    private boolean makeMove(int row, int col) {
-        if (board[row][col] == ' ') {
-            board[row][col] = currentPlayer;
-            return true;
-        }
-        return false;
-    }
-
-    private void switchPlayer() {
-        currentPlayer = (currentPlayer == 'X') ? 'O' : 'X';
-    }
-
-    private boolean checkWin(int row, int col) {
-        // TODO: 实现判断胜利的逻辑
-        return false;
-    }
-
-    private class ChessBoard extends JPanel {
-        @Override
-        protected void paintComponent(Graphics g) {
-            super.paintComponent(g);
-            for (int i = 0; i < ROWS; i++) {
-                for (int j = 0; j < COLS; j++) {
-                    int x = j * CELL_SIZE;
-                    int y = i * CELL_SIZE;
-
-                    g.drawRect(x, y, CELL_SIZE, CELL_SIZE);
-
-                    if (board[i][j] == 'X') {
-                        g.setColor(Color.BLACK);
-                        g.drawOval(x, y, CELL_SIZE, CELL_SIZE);
-                    } else if (board[i][j] == 'O') {
-                        g.setColor(Color.WHITE);
-                        g.fillOval(x, y, CELL_SIZE, CELL_SIZE);
-                    }
-                }
-            }
-        }
-    }
-
-    private class ChessMouseListener extends MouseAdapter {
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            int row = e.getY() / CELL_SIZE;
-            int col = e.getX() / CELL_SIZE;
-
-            if (row >= 0 && row < ROWS && col >= 0 && col < COLS) {
-                if (makeMove(row, col)) {
-                    if (checkWin(row, col)) {
-                        JOptionPane.showMessageDialog(null, "玩家 " + currentPlayer + " 获胜！");
-                        initializeBoard();
-                    } else {
-                        switchPlayer();
-                    }
-
+        chessBoard.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (ChessBoardService.onMouseClickChessBoard(e, chess)) {
                     repaint();
                 }
             }
-        }
+        });
+
+        setVisible(true);
     }
 
     public static void main(String[] args) {
