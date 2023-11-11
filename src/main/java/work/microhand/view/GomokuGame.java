@@ -16,7 +16,7 @@ public class GomokuGame extends JFrame {
     private Chess chess;
 
     public GomokuGame() {
-        setTitle("五子棋");
+        setTitle("Gomoku Game");
         chess = new Chess(15, 15);
         setSize(chess.getRows() * CELL_SIZE + 100, chess.getCols() * CELL_SIZE + 100);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
