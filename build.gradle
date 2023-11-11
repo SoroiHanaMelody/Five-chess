@@ -13,8 +13,6 @@ repositories {
 dependencies {
     // https://mvnrepository.com/artifact/org.apache.derby/derby
     implementation 'org.apache.derby:derby:10.14.2.0'
-//    // https://mvnrepository.com/artifact/org.apache.derby/derbyclient
-//    implementation 'org.apache.derby:derbyclient:10.16.1.1'
 
     // https://mvnrepository.com/artifact/com.alibaba/druid
     implementation 'com.alibaba:druid:1.2.16'
