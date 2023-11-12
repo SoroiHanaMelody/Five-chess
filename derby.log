@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Sat Nov 11 23:11:12 UTC 2023:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.15.2.0 - (1873585): instance a816c00e-018b-c0a7-4ddb-000007208a30 
+on database directory E:\Gomoku\src\main\resources\database\Gomoku with class loader com.intellij.database.remote.jdbc.impl.JdbcClassLoader$JdbcClassLoaderImpl@5594a1b5 
+Loaded from file:/D:/AppData/Roaming/JetBrains/IntelliJIdea2023.2/jdbc-drivers/Apache%20Derby/10.15.2.0/derby-10.15.2.0.jar
+java.vendor=Azul Systems, Inc.
+java.runtime.version=11.0.21+9-LTS
+user.dir=E:\Gomoku
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''

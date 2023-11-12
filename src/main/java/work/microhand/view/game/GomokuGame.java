@@ -1,8 +1,9 @@
-package work.microhand.view;
+package work.microhand.view.game;
 
 import work.microhand.manager.GameManager;
 import work.microhand.model.game.Chess;
 import work.microhand.service.ChessBoardService;
+import work.microhand.service.MenuService;
 
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
@@ -18,7 +19,7 @@ public class GomokuGame extends JFrame {
     public GomokuGame() {
         setTitle("Gomoku Game");
         Chess chess = GameManager.INSTANCE.getGame().getChess();
-        setSize(chess.getRows() * CELL_SIZE + 100, chess.getCols() * CELL_SIZE + 100);
+        setSize(chess.getRows() * CELL_SIZE + 80, chess.getCols() * CELL_SIZE + 65);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
@@ -32,21 +33,21 @@ public class GomokuGame extends JFrame {
         menuBar.add(fileMenu);
         setJMenuBar(menuBar);
 
-//        newGameItem.addActionListener(e -> {
-//            MenuService.onClickNewGameMenuItem(chess);
-//            repaint();
-//        });
-//
-//        saveGameItem.addActionListener(e -> {
-//            saveGame();
-//        });
-//
-//        loadGameItem.addActionListener(e -> {
-//            loadGame();
-//            repaint();
-//        });
+        newGameItem.addActionListener(e -> {
+            MenuService.onClickNewGameMenuItem();
+            repaint();
+        });
 
-        ChessBoard chessBoard = new ChessBoard(chess);
+        saveGameItem.addActionListener(e -> {
+            MenuService.onClickSaveGameMenuItem();
+        });
+
+        loadGameItem.addActionListener(e -> {
+            MenuService.onClickLoadGameMenuItem();
+            repaint();
+        });
+
+        ChessBoard chessBoard = new ChessBoard();
         add(chessBoard);
 
         chessBoard.addMouseListener(new MouseAdapter() {

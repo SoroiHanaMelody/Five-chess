@@ -1,5 +1,6 @@
-package work.microhand.view;
+package work.microhand.view.game;
 
+import work.microhand.manager.GameManager;
 import work.microhand.model.game.Chess;
 import work.microhand.model.game.Player;
 
@@ -12,15 +13,10 @@ import static work.microhand.model.game.Chess.CELL_SIZE;
  * @author SanseYooyea
  */
 public class ChessBoard extends JPanel {
-    private Chess chess;
-
-    public ChessBoard(Chess chess) {
-        this.chess = chess;
-    }
-
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        Chess chess = GameManager.INSTANCE.getGame().getChess();
         for (int i = 0; i < chess.getRows(); i++) {
             for (int j = 0; j < chess.getCols(); j++) {
                 g.setColor(Color.BLACK);

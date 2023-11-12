@@ -6,8 +6,8 @@ import javax.swing.*;
  * @author SanseYooyea
  */
 public class Game {
-    private Chess chess;
-    private Player currentPlayer;
+    protected Chess chess;
+    protected Player currentPlayer;
 
     public Game() {
         reset();

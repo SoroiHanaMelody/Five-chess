@@ -1,9 +1,6 @@
 package work.microhand.manager;
 
 import work.microhand.model.game.Game;
-import work.microhand.model.game.Player;
-
-import javax.swing.*;
 
 /**
  * @author SanseYooyea
