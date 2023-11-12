@@ -16,10 +16,7 @@ public class DatabaseConfig {
     }
 
     public static void init() {
-        URL configUrl = DatabaseConfig.class.getResource("/database.properties");
-        File configFile = new File(configUrl.getFile());
-        properties = new Properties();
-        try (InputStream is = new FileInputStream(configFile)) {
+        try (InputStream is = DatabaseConfig.class.getResourceAsStream("/database.properties")) {
             properties.load(is);
         } catch (IOException e) {
             System.out.println("Failed to load config file: " + e.getMessage());
