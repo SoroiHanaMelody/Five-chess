@@ -21,4 +21,9 @@ public class SavedGame {
     public Date getSaveDate() {
         return saveDate;
     }
+
+    @Override
+    public String toString() {
+        return "存档时间：" + saveDate;
+    }
 }

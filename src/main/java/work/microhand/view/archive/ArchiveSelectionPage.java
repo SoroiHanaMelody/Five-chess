@@ -1,6 +1,5 @@
 package work.microhand.view.archive;
 
-import work.microhand.manager.GameManager;
 import work.microhand.manager.GameSaveManager;
 import work.microhand.model.game.SavedGame;
 import work.microhand.service.ArchiveSelectService;
