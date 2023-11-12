@@ -53,9 +53,7 @@ public class GomokuGame extends JFrame {
         chessBoard.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                if (ChessBoardService.onMouseClickChessBoard(e)) {
-                    repaint();
-                }
+                ChessBoardService.onMouseClickChessBoard(e);
             }
         });
 
