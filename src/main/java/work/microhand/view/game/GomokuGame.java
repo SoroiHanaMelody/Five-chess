@@ -1,6 +1,8 @@
 package work.microhand.view.game;
 
+import work.microhand.io.DataSource;
 import work.microhand.manager.GameManager;
+import work.microhand.model.config.DatabaseConfig;
 import work.microhand.model.game.Chess;
 import work.microhand.service.ChessBoardService;
 import work.microhand.service.MenuService;
@@ -67,5 +69,7 @@ public class GomokuGame extends JFrame {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> INSTANCE = new GomokuGame());
+        DatabaseConfig.init();
+        new DataSource(DatabaseConfig.getProperties());
     }
 }
