@@ -44,6 +44,14 @@ tasks.withType(JavaCompile).configureEach {
     }
 }
 
+task packageJarAndDatabase(type: Zip) {
+    dependsOn shadowJar
+    from shadowJar.archivePath
+    from 'src/main/resources'
+    archiveFileName = 'GomokuGame.zip'
+    destinationDir = file('build/libs')
+}
+
 test {
     useJUnitPlatform()
 }
