@@ -1,8 +1,5 @@
 package work.microhand.model.game;
 
-/**
- * @author SanseYooyea
- */
 public class Chess {
     public static final int CELL_SIZE = 30;
     private final int rows;

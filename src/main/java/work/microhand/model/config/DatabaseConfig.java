@@ -7,9 +7,6 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.Properties;
 
-/**
- * @author SanseYooyea
- */
 public class DatabaseConfig {
 
     private static Properties properties;

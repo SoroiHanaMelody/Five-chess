@@ -2,9 +2,6 @@ package work.microhand.model.game;
 
 import java.util.Date;
 
-/**
- * @author SanseYooyea
- */
 public class SavedGame {
     private final Game game;
     private final Date saveDate;

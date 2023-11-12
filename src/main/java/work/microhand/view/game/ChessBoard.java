@@ -9,9 +9,6 @@ import java.awt.*;
 
 import static work.microhand.model.game.Chess.CELL_SIZE;
 
-/**
- * @author SanseYooyea
- */
 public class ChessBoard extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {

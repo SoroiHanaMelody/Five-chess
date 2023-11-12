@@ -1,8 +1,5 @@
 package work.microhand.model.game;
 
-/**
- * @author SanseYooyea
- */
 public enum Player {
     /**
      * 白棋

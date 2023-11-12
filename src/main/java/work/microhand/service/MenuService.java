@@ -9,9 +9,6 @@ import work.microhand.view.game.GomokuGame;
 import javax.swing.*;
 import java.util.Date;
 
-/**
- * @author SanseYooyea
- */
 public class MenuService {
     public static void onClickNewGameMenuItem() {
         GameManager.INSTANCE.newGame();

@@ -8,9 +8,6 @@ import java.util.Properties;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * @author SanseYooyea
- */
 public class DatabaseConfigTest {
     @BeforeAll
     public static void setUp() {

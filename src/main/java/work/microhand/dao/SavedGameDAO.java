@@ -8,9 +8,6 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author SanseYooyea
- */
 public class SavedGameDAO {
     public static final SavedGameDAO INSTANCE = new SavedGameDAO();
 

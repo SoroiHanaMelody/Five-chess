@@ -2,9 +2,6 @@ package work.microhand.model.game;
 
 import javax.swing.*;
 
-/**
- * @author SanseYooyea
- */
 public class Game {
     protected Chess chess;
     protected Player currentPlayer;

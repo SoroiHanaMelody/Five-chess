@@ -7,9 +7,6 @@ import work.microhand.view.game.GomokuGame;
 
 import javax.swing.*;
 
-/**
- * @author SanseYooyea
- */
 public class ArchiveSelectService {
     public static void onClickLoadButton(SavedGame selectedArchive) {
         if (selectedArchive != null) {
