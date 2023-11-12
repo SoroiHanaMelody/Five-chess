@@ -30,6 +30,7 @@ public class GomokuGame extends JFrame {
         JMenuItem saveGameItem = new JMenuItem("Save Game");
         JMenuItem loadGameItem = new JMenuItem("Load Game");
         fileMenu.add(newGameItem);
+        fileMenu.add(saveGameItem);
         fileMenu.add(loadGameItem);
         menuBar.add(fileMenu);
         setJMenuBar(menuBar);
