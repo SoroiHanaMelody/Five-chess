@@ -44,20 +44,6 @@ tasks.withType(JavaCompile).configureEach {
     }
 }
 
-sourceSets {
-    main {
-        resources {
-            srcDirs "src/main/resources"
-        }
-    }
-}
-
-processResources {
-    def props = [version: version]
-    inputs.properties props
-    filteringCharset 'UTF-8'
-}
-
 test {
     useJUnitPlatform()
 }
