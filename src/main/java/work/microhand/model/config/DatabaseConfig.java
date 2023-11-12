@@ -6,15 +6,16 @@ import java.util.Properties;
 
 public class DatabaseConfig {
 
-    private static final Properties PROPERTIES = new Properties();
+    private static Properties properties;
 
     public static Properties getProperties() {
-        return PROPERTIES;
+        return properties;
     }
 
     public static void init() {
+        properties = new Properties();
         try (InputStream is = DatabaseConfig.class.getResourceAsStream("/database.properties")) {
-            PROPERTIES.load(is);
+            properties.load(is);
         } catch (IOException e) {
             System.out.println("Failed to load config file: " + e.getMessage());
         }
