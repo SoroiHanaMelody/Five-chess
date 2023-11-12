@@ -5,24 +5,25 @@ import work.microhand.io.DataSource;
 import work.microhand.model.game.SavedGame;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * @author SanseYooyea
  */
 public class SavedGameDAO {
+    public static final SavedGameDAO INSTANCE = new SavedGameDAO();
+
     private static final Gson GSON = new Gson();
     private final DataSource dataSource = DataSource.getInstance();
 
-    private List<SavedGame> savedGames;
 
     // Save a SavedGame instance to the database
     public void saveGame(SavedGame savedGame) {
         try (Connection connection = dataSource.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO saved_games (GAME_ID, SAVED_DATE, GAME_FIELDS) VALUES (?, ?, ?)")) {
-            preparedStatement.setInt(1, savedGames.size());
-            preparedStatement.setDate(2, new java.sql.Date(savedGame.getSaveDate().getTime()));
-            preparedStatement.setString(3, GSON.toJson(savedGame, SavedGame.class));
+             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO saved_games (SAVED_DATE, GAME_FIELDS) VALUES (?, ?)")) {
+            preparedStatement.setDate(1, new Date(savedGame.getSaveDate().getTime()));
+            preparedStatement.setString(2, GSON.toJson(savedGame, SavedGame.class));
             // Set other fields as needed
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -31,11 +32,11 @@ public class SavedGameDAO {
     }
 
     // Load a SavedGame instance from the database
-    public SavedGame loadGame(int gameId) {
+    public SavedGame loadGame(Date savedDate) {
         SavedGame savedGame = null;
         try (Connection connection = dataSource.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM saved_games WHERE game_id = ?")) {
-            preparedStatement.setInt(1, gameId);
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM saved_games WHERE SAVED_DATE = ?")) {
+            preparedStatement.setDate(1, savedDate);
 
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 if (resultSet.next()) {
@@ -48,7 +49,8 @@ public class SavedGameDAO {
         return savedGame;
     }
 
-    public void loadAll() {
+    public List<SavedGame> loadAll() {
+        List<SavedGame> savedGames = new ArrayList<>();
         try (Connection connection = dataSource.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM saved_games")) {
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
@@ -59,13 +61,14 @@ public class SavedGameDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return savedGames;
     }
 
-    public void deleteGame(int gameId) {
+    public void deleteGame(Date savedDate) {
         SavedGame savedGame = null;
         try (Connection connection = dataSource.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM saved_games WHERE game_id = ?")) {
-            preparedStatement.setInt(1, gameId);
+             PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM saved_games WHERE SAVED_DATE = ?")) {
+            preparedStatement.setDate(1, savedDate);
         } catch (SQLException e) {
             e.printStackTrace();
         }

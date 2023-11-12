@@ -2,6 +2,8 @@ package work.microhand.manager;
 
 import work.microhand.model.game.Game;
 
+import java.util.Date;
+
 /**
  * @author SanseYooyea
  */
@@ -30,7 +32,7 @@ public enum GameManager {
     }
 
     public void saveGame() {
-
+        GameSaveManager.INSTANCE.save(new Date());
     }
 
     public void onPlacePiece(int row, int col) {

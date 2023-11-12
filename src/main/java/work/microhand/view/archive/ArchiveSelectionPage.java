@@ -1,5 +1,10 @@
 package work.microhand.view.archive;
 
+import work.microhand.manager.GameManager;
+import work.microhand.manager.GameSaveManager;
+import work.microhand.model.game.SavedGame;
+import work.microhand.service.ArchiveSelectService;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -7,17 +12,18 @@ import java.awt.*;
  * @author SanseYooyea
  */
 public class ArchiveSelectionPage extends JFrame {
-    private JList<String> archiveList;
-    private DefaultListModel<String> archiveListModel;
+    private JList<SavedGame> archiveList;
+    private DefaultListModel<SavedGame> archiveListModel;
 
     public ArchiveSelectionPage() {
         setTitle("存档选择");
         setSize(400, 300);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
 
         // 初始化存档列表
         archiveListModel = new DefaultListModel<>();
+        archiveListModel.addAll(GameSaveManager.INSTANCE.getSavedGames());
         archiveList = new JList<>(archiveListModel);
         JScrollPane scrollPane = new JScrollPane(archiveList);
 
@@ -26,23 +32,13 @@ public class ArchiveSelectionPage extends JFrame {
         JButton deleteButton = new JButton("删除存档");
 
         loadButton.addActionListener(e -> {
-            String selectedArchive = archiveList.getSelectedValue();
-            if (selectedArchive != null) {
-                // 执行加载存档的逻辑
-                loadArchive(selectedArchive);
-            } else {
-                JOptionPane.showMessageDialog(null, "请选择要加载的存档");
-            }
+            SavedGame selectedArchive = archiveList.getSelectedValue();
+            ArchiveSelectService.onClickLoadButton(selectedArchive);
         });
 
         deleteButton.addActionListener(e -> {
-            String selectedArchive = archiveList.getSelectedValue();
-            if (selectedArchive != null) {
-                // 执行删除存档的逻辑
-                deleteArchive(selectedArchive);
-            } else {
-                JOptionPane.showMessageDialog(null, "请选择要删除的存档");
-            }
+            SavedGame selectedArchive = archiveList.getSelectedValue();
+            ArchiveSelectService.onClickDeleteButton(archiveListModel, selectedArchive);
         });
 
         // 布局界面
@@ -55,21 +51,5 @@ public class ArchiveSelectionPage extends JFrame {
         add(buttonPanel, BorderLayout.SOUTH);
 
         setVisible(true);
-    }
-
-    private void loadArchive(String archiveName) {
-        // 实现加载存档的逻辑
-        // game.loadGame();
-        JOptionPane.showMessageDialog(null, "加载存档: " + archiveName);
-    }
-
-    private void deleteArchive(String archiveName) {
-        // 实现删除存档的逻辑
-        archiveListModel.removeElement(archiveName);
-        JOptionPane.showMessageDialog(null, "删除存档: " + archiveName);
-    }
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(ArchiveSelectionPage::new);
     }
 }

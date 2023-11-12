@@ -1,8 +1,9 @@
 package work.microhand.manager;
 
-import work.microhand.io.DataSource;
+import work.microhand.dao.SavedGameDAO;
 import work.microhand.model.game.SavedGame;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -14,16 +15,24 @@ public enum GameSaveManager {
      */
     INSTANCE;
 
-    private static final DataSource DATA_SOURCE = DataSource.getInstance();
     private List<SavedGame> savedGames;
 
     GameSaveManager() {
-
+        loadAll();
     }
 
-    public void load() {
-
+    public List<SavedGame> getSavedGames() {
+        return savedGames;
     }
 
+    public void loadAll() {
+        savedGames = SavedGameDAO.INSTANCE.loadAll();
+    }
+
+    public void save(Date savedDate) {
+        SavedGame savedGame = new SavedGame(GameManager.INSTANCE.getGame(), savedDate);
+        SavedGameDAO.INSTANCE.saveGame(savedGame);
+        savedGames.add(savedGame);
+    }
 
 }

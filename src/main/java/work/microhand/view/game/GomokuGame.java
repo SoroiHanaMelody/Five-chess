@@ -15,6 +15,7 @@ import static work.microhand.model.game.Chess.CELL_SIZE;
  * @author SanseYooyea
  */
 public class GomokuGame extends JFrame {
+    private static GomokuGame INSTANCE;
 
     public GomokuGame() {
         setTitle("Gomoku Game");
@@ -44,7 +45,6 @@ public class GomokuGame extends JFrame {
 
         loadGameItem.addActionListener(e -> {
             MenuService.onClickLoadGameMenuItem();
-            repaint();
         });
 
         ChessBoard chessBoard = new ChessBoard();
@@ -62,7 +62,11 @@ public class GomokuGame extends JFrame {
         setVisible(true);
     }
 
+    public static void staticRepaint() {
+        INSTANCE.repaint();
+    }
+
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(GomokuGame::new);
+        SwingUtilities.invokeLater(() -> INSTANCE = new GomokuGame());
     }
 }

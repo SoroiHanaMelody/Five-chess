@@ -2,6 +2,12 @@ package work.microhand.service;
 
 
 import work.microhand.manager.GameManager;
+import work.microhand.manager.GameSaveManager;
+import work.microhand.view.archive.ArchiveSelectionPage;
+import work.microhand.view.game.GomokuGame;
+
+import javax.swing.*;
+import java.util.Date;
 
 /**
  * @author SanseYooyea
@@ -9,13 +15,14 @@ import work.microhand.manager.GameManager;
 public class MenuService {
     public static void onClickNewGameMenuItem() {
         GameManager.INSTANCE.newGame();
+        GomokuGame.staticRepaint();
     }
 
     public static void onClickSaveGameMenuItem() {
-        GameManager.INSTANCE.saveGame();
+        GameSaveManager.INSTANCE.save(new Date());
     }
 
     public static void onClickLoadGameMenuItem() {
-//        GameManager.INSTANCE.loadGame();
+        SwingUtilities.invokeLater(ArchiveSelectionPage::new);
     }
 }
