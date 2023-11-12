@@ -6,9 +6,6 @@ import work.microhand.model.game.SavedGame;
 import java.util.Date;
 import java.util.List;
 
-/**
- * @author SanseYooyea
- */
 public enum GameSaveManager {
     /**
      * 单例

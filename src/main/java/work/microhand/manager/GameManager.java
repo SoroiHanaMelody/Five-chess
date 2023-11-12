@@ -4,9 +4,6 @@ import work.microhand.model.game.Game;
 
 import java.util.Date;
 
-/**
- * @author SanseYooyea
- */
 public enum GameManager {
     /**
      * 单例

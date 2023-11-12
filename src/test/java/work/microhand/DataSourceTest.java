@@ -9,9 +9,6 @@ import java.util.Properties;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-/**
- * @author SanseYooyea
- */
 public class DataSourceTest {
 
     @Test

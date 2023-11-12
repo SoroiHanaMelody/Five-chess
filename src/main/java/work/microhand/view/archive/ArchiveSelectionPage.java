@@ -8,9 +8,6 @@ import work.microhand.service.ArchiveSelectService;
 import javax.swing.*;
 import java.awt.*;
 
-/**
- * @author SanseYooyea
- */
 public class ArchiveSelectionPage extends JFrame {
     private JList<SavedGame> archiveList;
     private DefaultListModel<SavedGame> archiveListModel;

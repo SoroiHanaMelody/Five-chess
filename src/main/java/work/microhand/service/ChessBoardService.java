@@ -8,9 +8,6 @@ import java.awt.event.MouseEvent;
 
 import static work.microhand.model.game.Chess.CELL_SIZE;
 
-/**
- * @author SanseYooyea
- */
 public class ChessBoardService {
     /**
      * 处理鼠标点击棋盘事件
