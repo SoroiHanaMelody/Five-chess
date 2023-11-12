@@ -1,6 +1,7 @@
 package work.microhand.service;
 
 import work.microhand.manager.GameManager;
+import work.microhand.manager.GameSaveManager;
 import work.microhand.model.game.SavedGame;
 import work.microhand.view.game.GomokuGame;
 
@@ -38,6 +39,7 @@ public class ArchiveSelectService {
     private static void deleteArchive(DefaultListModel<SavedGame> archiveListModel, SavedGame archive) {
         // 实现删除存档的逻辑
         archiveListModel.removeElement(archive);
+        GameSaveManager.INSTANCE.delete(archive);
         JOptionPane.showMessageDialog(null, "删除存档: " + archive);
     }
 }

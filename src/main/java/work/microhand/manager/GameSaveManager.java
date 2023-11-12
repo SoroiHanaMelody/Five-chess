@@ -35,4 +35,9 @@ public enum GameSaveManager {
         savedGames.add(savedGame);
     }
 
+    public void delete(SavedGame savedGame) {
+        savedGames.remove(savedGame);
+        SavedGameDAO.INSTANCE.deleteGame(savedGame);
+    }
+
 }

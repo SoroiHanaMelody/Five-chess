@@ -64,11 +64,10 @@ public class SavedGameDAO {
         return savedGames;
     }
 
-    public void deleteGame(Date savedDate) {
-        SavedGame savedGame = null;
+    public void deleteGame(SavedGame savedGame) {
         try (Connection connection = dataSource.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM saved_games WHERE SAVED_DATE = ?")) {
-            preparedStatement.setDate(1, savedDate);
+            preparedStatement.setDate(1, new Date(savedGame.getSaveDate().getTime()));
         } catch (SQLException e) {
             e.printStackTrace();
         }
